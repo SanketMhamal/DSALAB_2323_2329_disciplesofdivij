@@ -2,12 +2,18 @@
 //sanket
 void push(Stack *stack,int item)
 {
-
+ if (is_full(stack))
+ printf("overflow");
+ else
+ {
+ 	stack->top++;
+ 	stack->data[stack->top]=item;
+ }
 } 
 
 void init(Stack *stack)
 {
-    
+    stack->top=0;
 }
 
 //rahul
