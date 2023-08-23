@@ -1,30 +1,33 @@
 #include "stack.h"
-//sanket
-void push(Stack *stack,int item)
-{
- if (is_full(stack))
- printf("overflow");
- else
- {
- 	stack->top++;
- 	stack->data[stack->top]=item;
- }
-} 
 
-void init(Stack *stack)
-{
-    stack->top=0;
+void push(Stack *stack, int item) {
+    if (is_full(stack))
+        printf("Overflow\n");
+    else {
+        stack->top++;
+        stack->data[stack->top] = item;
+    }
 }
 
-//rahul
-void is_empty(Stack *stack)
-{
-
+void init(Stack *stack) {
+    stack->top = -1; // Initialize top to -1 for an empty stack
 }
-void is_full(Stack *stack)
-{}
 
-void pop(Stack * stack)
-{
-    
+int is_empty(Stack *stack) {
+    return stack->top == -1; // Return 1 if stack is empty, 0 otherwise
+}
+
+int is_full(Stack *stack) {
+    return stack->top == STACK_SIZE - 1; // Return 1 if stack is full, 0 otherwise
+}
+
+int pop(Stack *stack) {
+    if (is_empty(stack)) {
+        printf("Underflow\n");
+        return -1; // Return a special value to indicate underflow
+    } else {
+        int item = stack->data[stack->top];
+        stack->top--;
+        return item;
+    }
 }
