@@ -1,5 +1,5 @@
 #include "stack.h"
-
+#include<stdio.h>
 void push(Stack *stack, int item) {
     if (is_full(stack))
         printf("Overflow\n");
