@@ -1,6 +1,6 @@
 #include "stack.h"
 #include<stdio.h>
-void push(Stack *stack, int item) {
+void push(Stack *stack, char item) {
     if (is_full(stack))
         printf("Overflow\n");
     else {
@@ -21,7 +21,7 @@ int is_full(Stack *stack) {
     return stack->top == STACK_SIZE - 1; // Return 1 if stack is full, 0 otherwise
 }
 
-int pop(Stack *stack) {
+char pop(Stack *stack) {
     if (is_empty(stack)) {
         printf("Underflow\n");
         return -1; // Return a special value to indicate underflow
