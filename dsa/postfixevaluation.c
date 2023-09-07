@@ -37,9 +37,3 @@ i++;
     return result;  
 }  
   
-// int main() {  
-//     char expression[] = "5 6 7 + * 8 -";  
-//     int result = evaluate(expression);  
-// printf("Result= %d\n", result);  
-// return 0;  
-// }  
