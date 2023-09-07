@@ -6,7 +6,7 @@
 
 int main()
 { int n,ret;
-char expression[30]= "5 6 7 + * 8 -";
+char expression[30];
 int result;
 Stack s1;
    do
@@ -25,7 +25,8 @@ Stack s1;
 	        push(&s1,50);
 			printf("%d",pop(&s1));
    	        break;
-		case 4:   
+		case 4:   printf("enter postfix expression");
+		scanf("%s",expression);
      result= evaluate(expression);  
 printf("Result= %d\n", result);
 break;  
@@ -35,3 +36,4 @@ break;
    }while(n);
    return 0;
 }
+
