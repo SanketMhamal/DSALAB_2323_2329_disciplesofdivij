@@ -45,9 +45,22 @@ void insert(Node** root, int data) {
 }
 //2323
 void preorderTraversal(Node* root) {
-
+    if (root == NULL) return;
+    printf("%d ", root->data);
+    preorderTraversal(root->left);
+    preorderTraversal(root->right);
 }
 
+void inorderTraversal(Node* root) {
+    if (root == NULL) return;
+    inorderTraversal(root->left);
+    printf("%d ", root->data);
+    inorderTraversal(root->right);
+}
 
-void inorderTraversal(Node* root);
-void postorderTraversal(Node* root);
+void postorderTraversal(Node* root) {
+    if (root == NULL) return;
+    postorderTraversal(root->left);
+    postorderTraversal(root->right);
+    printf("%d ", root->data);
+}

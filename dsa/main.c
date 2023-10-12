@@ -7,8 +7,10 @@
 #include "match.h"
 #include "dijkstra.h"
 #include "infixtopostfix.h"
+#include "binarytree.h"
+#include <stdlib.h>
 int main()
-{ int n,ret;
+{ int n,ret,c;
 char expression[30];
 int result;
 char postfix[30];
@@ -23,7 +25,8 @@ int graph[V][V] = {
         {8, 11, 0, 0, 0, 0, 1, 0, 7},
         {0, 0, 2, 0, 0, 0, 6, 7, 0}
     };
-
+int m, value;
+    Node* root = NULL;
 Stack s1;
    do
    {
@@ -67,7 +70,34 @@ scanf("%s",expression);
     dijkstra(graph, src);
 		break;
 		
-	 case 7:break;
+	 case 7:do{
+		printf("\n enter 1:insert node \n 2:preorder \n 3:postorder \n 4:inorder");
+   	scanf("%d",&c);
+	switch(c)
+	{
+		case 1:
+		 printf("Enter the number of nodes: ");
+    scanf("%d", &m);
+
+    for (int i = 0; i < m; i++) {
+        printf("Enter value for node %d: ", i + 1);
+        scanf("%d", &value);
+        insert(&root, value);
+    }
+		break;
+		case 2:preorderTraversal(root);break;
+		
+		case 3:inorderTraversal(root);
+		case 4:postorderTraversal(root);
+		default :c=0;
+	}
+   	
+	 }
+	 while(c);
+	 free(root);
+	 
+	 
+	 break;
 	   case 8: printf(" enter Infix expression");
         
 		scanf("%s",expression);

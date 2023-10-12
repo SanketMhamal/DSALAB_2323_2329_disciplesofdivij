@@ -48,12 +48,25 @@ void dijkstra(int graph[V][V], int src)
 }
 
 
+int minDistance(int dist[], bool sptSet[]) {
+    int min = INT_MAX, min_index;
 
+    for (int v = 0; v < V; v++) {
+        if (!sptSet[v] && dist[v] < min) {
+            min = dist[v];
+            min_index = v;
+        }
+    }
 
+    return min_index;
+}
 
-// Function to find the vertex with the minimum distance value.
-
-
-// Function to perform Dijkstra's algorithm.
+// Function to print the solution.
+void printSolution(int dist[]) {
+    printf("\nVertex \t Distance from Source\n");
+    for (int i = 0; i < V; i++) {
+        printf("%d \t %d\n", i, dist[i]);
+    }
+}
 
 
