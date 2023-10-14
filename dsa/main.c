@@ -37,7 +37,7 @@ Stack s1;
    do
    {
    	printf("\nenter 1: For merge sort \nenter 2:for add \nenter 3:for insertion sort \nenter 4 for postfix evaluation \n\nenter 0:for exit");
-	printf("\nenter 5:bracketmatching \nenter 6:shortest path algo\nenter 7:binary tree 8:infix to postfixevauluation");
+	printf("\nenter 5:bracketmatching \nenter 6:shortest path algo\nenter 7:binary tree \n8:infix to postfixevauluation\n9:quicksort\n10:bracketmatching");
    	scanf("%d",&n);
    	
    	switch(n){
@@ -116,9 +116,32 @@ scanf("%s",expression);
 	 }
 	 while(choice!=5);
 	 free(root);
-	 
+	
+	 case 8: printf(" enter Infix expression");
+        
+		scanf("%s",expression);
+		infixToPostfix(expression, postfix);
+		
+	   result= evaluate(postfix);  
+	  
+        printf("Result= %d\n", result);
+         break; 
+case 9:
+ printf("Enter the input file name: ");
+                scanf("%s", inputfile);
+                printf("Enter the output file name: ");
+                scanf("%s", outputFile);
+                sortAndSaveWordFrequency(inputfile, outputFile);
+                printf("Word frequency sorted and saved.\n");
 	 
 	 break;
+case 10: printf("Enter an expression: ");
+                scanf("%s", expression);
+                if (areBracketsBalanced(expression)) {
+                    printf("Brackets are balanced.\n");
+                } else {
+                    printf("Brackets are not balanced.\n");
+                }
 case 0: printf("exiting menu");break;
    	  default: printf("\n\nInvalid text\n\n");
 	   }
