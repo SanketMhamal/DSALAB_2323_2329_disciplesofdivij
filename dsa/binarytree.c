@@ -3,46 +3,28 @@
 #include <stdlib.h>
 #include <string.h>
 //2329
+// Function to create a new node
 Node* createNode(int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
-    if (!newNode) {
-        printf("Memory allocation failed!\n");
-        exit(1);
+    if (newNode) {
+        newNode->data = data;
+        newNode->left = NULL;
+        newNode->right = NULL;
     }
-    newNode->data = data;
-    newNode->left = newNode->right = NULL;
     return newNode;
 }
 
+// Function to insert a node into the binary tree
 void insert(Node** root, int data) {
-    char direction[10];
     if (*root == NULL) {
         *root = createNode(data);
-        return;
-    }
-    printf("Enter the direction (left/right) for node value %d: ", data);
-    scanf("%s", direction);
-    Node* current = *root;
-    Node* parent = NULL;
-    while(current != NULL) {
-        parent = current;
-        if (strcmp(direction, "left") == 0) {
-            current = current->left;
-            if (current == NULL) {
-                parent->left = createNode(data);
-                return;
-            }
-        } else if (strcmp(direction, "right") == 0) {
-            current = current->right;
-            if (current == NULL) {
-                parent->right = createNode(data);
-                return;
-            }
-        }
-        printf("Direction already taken, enter again (left/right) for node value %d: ", data);
-        scanf("%s", direction);
+    } else if (data < (*root)->data) {
+        insert(&(*root)->left, data);
+    } else {
+        insert(&(*root)->right, data);
     }
 }
+
 //2323
 void preorderTraversal(Node* root) {
     if (root == NULL) return;

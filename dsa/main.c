@@ -8,10 +8,16 @@
 #include "dijkstra.h"
 #include "infixtopostfix.h"
 #include "binarytree.h"
+#include "quicksort.h"
 #include <stdlib.h>
 int main()
-{ int n,ret,c;
+{ Node* root = NULL;
+
+    int choice, data;
+	 int n,ret,c;
 char expression[30];
+ char inputfile[100];
+    char outputFile[100];
 int result;
 char postfix[30];
 int graph[V][V] = {
@@ -34,8 +40,8 @@ Stack s1;
 	printf("\nenter 5:bracketmatching \nenter 6:shortest path algo\nenter 7:binary tree 8:infix to postfixevauluation");
    	scanf("%d",&n);
    	
-   	switch(n)
-   	{ case 1:
+   	switch(n){
+   	 case 1:
 	   file_sort();
    	       break;  
    	  case 2:ret=add(5,10);
@@ -71,45 +77,50 @@ scanf("%s",expression);
 		break;
 		
 	 case 7:do{
-		printf("\n enter 1:insert node \n 2:preorder \n 3:postorder \n 4:inorder");
-   	scanf("%d",&c);
-	switch(c)
-	{
-		case 1:
-		 printf("Enter the number of nodes: ");
-    scanf("%d", &m);
+		 printf("\nBinary Tree Operations:\n");
+        printf("1. Insert a node\n");
+        printf("2. Preorder Traversal\n");
+        printf("3. Inorder Traversal\n");
+        printf("4. Postorder Traversal\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
 
-    for (int i = 0; i < m; i++) {
-        printf("Enter value for node %d: ", i + 1);
-        scanf("%d", &value);
-        insert(&root, value);
-    }
-		break;
-		case 2:preorderTraversal(root);break;
-		
-		case 3:inorderTraversal(root);
-		case 4:postorderTraversal(root);
-		default :c=0;
-	}
-   	
+        switch (choice) {
+            case 1:
+                printf("Enter data to insert: ");
+                scanf("%d", &data);
+                insert(&root, data);
+                break;
+            case 2:
+                printf("Preorder Traversal: ");
+                preorderTraversal(root);
+                printf("\n");
+                break;
+            case 3:
+                printf("Inorder Traversal: ");
+                inorderTraversal(root);
+                printf("\n");
+                break;
+            case 4:
+                printf("Postorder Traversal: ");
+                postorderTraversal(root);
+                printf("\n");
+                break;
+            case 5:
+                // Clean up and exit
+                
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
 	 }
-	 while(c);
+	 while(choice!=5);
 	 free(root);
 	 
 	 
 	 break;
-	   case 8: printf(" enter Infix expression");
-        
-		scanf("%s",expression);
-		infixToPostfix(expression, postfix);
-		
-	   result= evaluate(postfix);  
-	  
-        printf("Result= %d\n", result);
-         break; 
-
-   	  case 0:break;
-   	  default: printf("\n\nInvalid go home\n\n");
+case 0: printf("exiting menu");break;
+   	  default: printf("\n\nInvalid text\n\n");
 	   }
 	  
    }while(n);
